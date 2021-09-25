@@ -10,7 +10,7 @@
     <div class="container" style="padding: 30px 0;">
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
                             All Categories
