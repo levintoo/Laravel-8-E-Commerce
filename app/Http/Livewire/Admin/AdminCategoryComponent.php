@@ -12,7 +12,7 @@ class AdminCategoryComponent extends Component
     public function deleteCategory($id)
     {
         $category = Category::find($id);
-        $category->delete;
+        $category->delete();
         session()->flash('message','Category ('.$category->name. ') has been deleted successfully');
     }
     public function render()
