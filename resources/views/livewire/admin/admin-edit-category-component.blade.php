@@ -16,7 +16,7 @@
                     @if(Session::has('message'))
                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                     @endif
-                    <form class="form-horizontal" wire:submit.prevent="storeCategory">
+                    <form class="form-horizontal" wire:submit.prevent="updateCategory">
                         <div class="form-group">
                             <label class="col-md-4 control-label">Category Name</label>
                             <div class="col-md-4">
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Category Name</label>
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </form>
