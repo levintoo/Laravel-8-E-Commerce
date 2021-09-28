@@ -22,53 +22,56 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        @if(Session::has('message'))
+                            <dv class="alert alert-success" role="alert">{{Session::get('message')}}</dv>
+                        @endif
+                        <form class="form-horizontal"  wire:submit.prevent="addProduct">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Name</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Product Name" class="form-control input-md"/>
-                                 </div>
+                                    <input type="text" placeholder="Product Name" class="form-control input-md" wire:model="name" wire:keyup="generateslug"/>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Slug</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Product Slug" class="form-control input-md"/>
+                                    <input type="text" placeholder="Category Slug" class="form-control input-md"  wire:model="slug" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Short Description</label>
                                 <div class="col-md-4">
-                                    <textarea class="form-control  input-md"></textarea>
+                                    <textarea class="form-control  input-md" wire:model="short_description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Description</label>
                                 <div class="col-md-4">
-                                    <textarea class="form-control input-md" rows="4"></textarea>
+                                    <textarea class="form-control input-md" rows="4" wire:model="description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Regular Price</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Regular Price" class="form-control input-md"/>
+                                    <input type="text" placeholder="Regular Price" class="form-control input-md" wire:model="regular_price"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Sale Price</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Sale Price" class="form-control input-md"/>
+                                    <input type="text" placeholder="Sale Price" class="form-control input-md" wire:model="sale_price"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">SKU</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="SKU" class="form-control input-md"/>
+                                    <input type="text" placeholder="SKU" class="form-control input-md" wire:model="SKU"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Stock</label>
                                 <div class="col-md-4">
-                                    <select class="form-control input-md">
+                                    <select class="form-control input-md" wire:model="stock_status">
                                         <option value="instock">InStock</option>
                                         <option value="ouofstock">Out of Stock</option>
                                     </select>
@@ -77,7 +80,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Featured</label>
                                 <div class="col-md-4">
-                                    <select class="form-control input-md">
+                                    <select class="form-control input-md" wire:model="featured">
                                         <option value="0">No</option>
                                         <option value="1">Yes</option>
                                     </select>
@@ -86,22 +89,25 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Quantity</label>
                                 <div class="col-md-4">
-                                    <input type="number" placeholder="Quantity" class="form-control input-md"/>
+                                    <input type="number" placeholder="Quantity" class="form-control input-md" wire:model="quantity"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Image</label>
                                 <div class="col-md-4">
-                                    <input type="file" class="input-file"/>
+                                    <input type="file" class="input-file" wire:model="image"/>
+                                    @if($image)
+                                        <img src="{{$image->temporaryUrl()}}" width="120"/>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Category</label>
                                 <div class="col-md-4">
                                     <select class="form-control input-md">
-                                        <option value="">Select category</option>
+                                        <option value="" wire:model="category_id">Select category</option>
                                         @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            <option value={{$category->id}}>{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -109,7 +115,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <a href="" class="btn btn-primary" type="submit">Submit</a>
+                                    <input href="" class="btn btn-primary" type="submit" value="Submit"/>
                                 </div>
                             </div>
                         </form>
