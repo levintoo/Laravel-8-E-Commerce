@@ -27,6 +27,7 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Name</th>
                                 <th>Image</th>
                                 <th>Stock</th>
                                 <th>Price</th>
@@ -39,6 +40,7 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td>{{$product->id}}</td>
+                                    <td>{{$product->name}}</td>
                                     <td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60" /></td>
                                     <td>{{$product->stock_status}}</td>
                                     <td>{{$product->regular_price}}</td>

@@ -25,7 +25,7 @@
                         @if(Session::has('message'))
                             <dv class="alert alert-success" role="alert">{{Session::get('message')}}</dv>
                         @endif
-                        <form class="form-horizontal"  wire:submit.prevent="addProduct">
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data"  wire:submit.prevent="addProduct">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Name</label>
                                 <div class="col-md-4">
@@ -53,13 +53,13 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Regular Price</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Regular Price" class="form-control input-md" wire:model="regular_price"/>
+                                    <input type="number" placeholder="Regular Price" class="form-control input-md" wire:model="regular_price"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Sale Price</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Sale Price" class="form-control input-md" wire:model="sale_price"/>
+                                    <input type="number" placeholder="Sale Price" class="form-control input-md" wire:model="sale_price"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -104,8 +104,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Category</label>
                                 <div class="col-md-4">
-                                    <select class="form-control input-md">
-                                        <option value="" wire:model="category_id">Select category</option>
+                                    <select class="form-control input-md" wire:model="category_id">
+                                        <option >Select category</option>
                                         @foreach($categories as $category)
                                             <option value={{$category->id}}>{{$category->name}}</option>
                                         @endforeach
