@@ -50,8 +50,7 @@ class AdminAddProductComponent extends Component
 
 
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
-//        $this->image->storeAs('newimg', $imageName);
-        $this->image->move(public_path('assets\images\newimg'), $imageName);
+        $this->image->storeAs('products', $imageName);
         $product->image = $imageName;
 
         $product->category_id = $this->category_id;

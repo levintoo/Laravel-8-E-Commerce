@@ -25,17 +25,18 @@
                         @if(Session::has('message'))
                             <dv class="alert alert-success" role="alert">{{Session::get('message')}}</dv>
                         @endif
-                        <form class="form-horizontal" method="post" enctype="multipart/form-data"  wire:submit.prevent="addProduct">
+
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data"  wire:submit.prevent="addProduct">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Name</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Product Name" class="form-control input-md" wire:model="name" wire:keyup="generateslug"/>
+                                    <input type="text" placeholder="Product Name" class="form-control input-md" wire:model="name" wire:keyup="generateslug">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Slug</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Category Slug" class="form-control input-md"  wire:model="slug" />
+                                    <input type="text" placeholder="Category Slug" class="form-control input-md"  wire:model="slug" >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -53,19 +54,19 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Regular Price</label>
                                 <div class="col-md-4">
-                                    <input type="number" placeholder="Regular Price" class="form-control input-md" wire:model="regular_price"/>
+                                    <input type="number" placeholder="Regular Price" class="form-control input-md" wire:model="regular_price">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Sale Price</label>
                                 <div class="col-md-4">
-                                    <input type="number" placeholder="Sale Price" class="form-control input-md" wire:model="sale_price"/>
+                                    <input type="number" placeholder="Sale Price" class="form-control input-md" wire:model="sale_price">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">SKU</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="SKU" class="form-control input-md" wire:model="SKU"/>
+                                    <input type="text" placeholder="SKU" class="form-control input-md" wire:model="SKU">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -89,15 +90,15 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Quantity</label>
                                 <div class="col-md-4">
-                                    <input type="number" placeholder="Quantity" class="form-control input-md" wire:model="quantity"/>
+                                    <input type="number" placeholder="Quantity" class="form-control input-md" wire:model="quantity">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Image</label>
                                 <div class="col-md-4">
-                                    <input type="file" class="input-file" wire:model="image"/>
+                                    <input type="file" class="input-file" wire:model="image">
                                     @if($image)
-                                        <img src="{{$image->temporaryUrl()}}" width="120"/>
+                                        <img src="{{$image->temporaryUrl()}}" width="120">
                                     @endif
                                 </div>
                             </div>
@@ -115,7 +116,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <input href="" class="btn btn-primary" type="submit" value="Submit"/>
+                                    <input href="" class="btn btn-primary" type="submit" value="Submit">
                                 </div>
                             </div>
                         </form>
