@@ -30,8 +30,8 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Image</th>
                                 <th>Title</th>
+                                <th>Image</th>
                                 <th>Subtitle</th>
                                 <th>Price</th>
                                 <th>Link</th>
@@ -45,16 +45,16 @@
                                 @foreach($sliders as $slider)
                                     <tr>
                                         <td>{{$slider->id}}</td>
-                                        <td><img src="{{asset('assets/images/products')}}/{{$slider->image}}" width="60" /></td>
                                         <td>{{$slider->title}}</td>
+                                        <td><img src="{{asset('assets/images/sliders')}}/{{$slider->image}}" width="60" /></td>
                                         <td>{{$slider->subtitle}}</td>
                                         <td>{{$slider->price}}</td>
                                         <td>{{$slider->link}}</td>
                                         <td>{{$slider->status == 1 ? 'Active':'Inactive'}}</td>
                                         <td>{{$slider->created_at}}</td>
                                         <td>
-{{--                                        <a href="{{route('admin.editproduct',['product_slug'=>hello->slug])}}"  ><i class="fa fa-edit fa-2x"></i></a>--}}
-{{--                                        <a href="#"  style="margin-left: 10px;" wire:click.prevent="deleteProduct(d}})"><i class="fa fa-times fa-2x text-danger"></i></a>--}}
+                                        <a href="{{route('admin.edithomeslider',['slide_id'=>$slider->id])}}"  ><i class="fa fa-edit fa-2x"></i></a>
+                                            <a href="#"  style="margin-left: 10px;" wire:click.prevent="deleteSlide({{$slider->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
