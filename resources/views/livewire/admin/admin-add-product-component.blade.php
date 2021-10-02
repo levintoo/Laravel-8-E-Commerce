@@ -96,7 +96,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Image</label>
                                 <div class="col-md-4">
-                                    <input type="file" class="input-file" wire:model="image">
+                                    <input type="file" class="input-file" wire:model="image" required>
                                     @if($image)
                                         <img src="{{$image->temporaryUrl()}}" width="120">
                                     @endif
@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Category</label>
                                 <div class="col-md-4">
-                                    <select class="form-control input-md" wire:model="category_id">
+                                    <select class="form-control input-md" wire:model="category_id" required>
                                         <option >Select category</option>
                                         @foreach($categories as $category)
                                             <option value={{$category->id}}>{{$category->name}}</option>

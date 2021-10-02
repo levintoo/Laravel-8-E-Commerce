@@ -30,10 +30,13 @@ class AdminAddProductComponent extends Component
         $this->stock_status ='instock';
         $this->featured = 0;
     }
+
     public function generateslug()
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name,'-');
     }
+
+
     public function addProduct()
     {
         $product = new Product();
