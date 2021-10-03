@@ -24,11 +24,11 @@
                     @if(Session::has('message'))
                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                     @endif
-                        <form class="form-horizontal" wire:submit.prevent="storeCategory">
+                        <form class="form-horizontal" wire:submit.prevent="">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Category Name</label>
+                                <label class="col-md-4 control-label">Choose Category</label>
                                 <div class="col-md-4">
-                                    <select name="categories[]" class="form-control input-md" multiple="multiple">
+                                    <select name="categories[]" class="form-control sel_categories" multiple="multiple">
                                         @foreach($categories as $category)
                                             <option class="form-control input-md" value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
@@ -36,9 +36,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-md-4 control-label">No Of Products</label>
+                                <div class="col-md-4">
+                                    <input class="form-control input-md" name="" type="number">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
                         </form>
