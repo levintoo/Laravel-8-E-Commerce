@@ -8,7 +8,7 @@
                     <div class="item-slide">
                         <img src="{{ asset('assets/images/sliders/') }}/{{$slide->image}}" alt="{{$slide->title}}" class="img-slide">
                         <div class="slide-info slide-1">
-                            <h2 class="f-title">{{$slide->title}}<b></b></h2>
+                            <h2 class="f-title">{{$slide->title}}</h2>
                             <span class="subtitle">{{$slide->subtitle}}</span>
                             <p class="sale-info">Only price: <span class="price">${{$slide->price}}</span></p>
                             <a href="{{$slide->link}}" target="_blank" class="btn-link">Shop Now</a>

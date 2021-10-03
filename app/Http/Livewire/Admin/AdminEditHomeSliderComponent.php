@@ -32,11 +32,12 @@ class AdminEditHomeSliderComponent extends Component
     }
     public function updateSlide()
     {
-        $slider = HomeSlider::find($this->slider_id)->first();
+        $slider = HomeSlider::find($this->slider_id);
         $slider->title = $this->title;
         $slider->subtitle = $this->subtitle;
         $slider->price = $this->price;
         $slider->link = $this->link;
+        $slider->status = $this->status;
 
         if($this->newimage)
         {
@@ -50,7 +51,6 @@ class AdminEditHomeSliderComponent extends Component
             $slider->image = $imageName;
 
         }
-        $slider->status = $this->status;
         $slider->save();
         session()->flash('message', 'Slider has been updated successfully');
     }
