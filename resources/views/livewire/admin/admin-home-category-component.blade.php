@@ -30,7 +30,7 @@
                                 <div class="col-md-4">
                                     <select name="categories[]" class="form-control sel_categories" multiple="multiple">
                                         @foreach($categories as $category)
-                                            <option class="form-control input-md" value="{{$category->id}}">{{$category->name}}</option>
+                                            <option class=" input-md" value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -53,3 +53,11 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(document).ready(function (){
+            $('.sel_categories').select2();
+        })
+    </script>
+@endpush
