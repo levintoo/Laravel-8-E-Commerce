@@ -24,11 +24,11 @@
                     @if(Session::has('message'))
                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                     @endif
-                        <form class="form-horizontal" wire:submit.prevent="">
+                        <form class="form-horizontal" wire:submit.prevent="updateHomeCategory">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Choose Category</label>
-                                <div class="col-md-4">
-                                    <select name="categories[]" class="form-control sel_categories" multiple="multiple">
+                                <div class="col-md-4" wire:ignore>
+                                    <select name="categories[]" class="form-control sel_categories" multiple="multiple" wire:model="selected_categories">
                                         @foreach($categories as $category)
                                             <option class=" input-md" value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">No Of Products</label>
                                 <div class="col-md-4">
-                                    <input class="form-control input-md" name="" type="number">
+                                    <input class="form-control input-md" name="" type="number" wire:model="numberofproducts">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -58,6 +58,10 @@
     <script>
         $(document).ready(function (){
             $('.sel_categories').select2();
-        })
+            $('.sel_categories').on('change',function(e){
+                var data= $('.sel_categories').select2("val");
+                @this.set('selected_categories',data);
+            });
+        });
     </script>
 @endpush
