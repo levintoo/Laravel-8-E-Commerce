@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Sale;
 use Livewire\Component;
 use Cart;
 
