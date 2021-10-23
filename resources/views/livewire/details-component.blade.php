@@ -1,5 +1,13 @@
 <main id="main" class="main-site">
-
+<style>
+    .regprice{
+        font-wight: 300;
+        font-size: 13px !important;
+        color: #aaaaaa !important;
+        padding-left: 10px;
+        text-decoration: line-through;
+    }
+</style>
     <div class="container">
 
         <div class="wrap-breadcrumb">
@@ -35,16 +43,18 @@
                         <h2 class="product-name">{{$product->name}}</h2>
                         <div class="short-desc">
                             {{$product->short_description}}
-{{--                            <ul>--}}
-{{--                                <li>7,9-inch LED-backlit, 130Gb</li>--}}
-{{--                                <li>Dual-core A7 with quad-core graphics</li>--}}
-{{--                                <li>FaceTime HD Camera 7.0 MP Photos</li>--}}
-{{--                            </ul>--}}
                         </div>
                         <div class="wrap-social">
                             <a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
                         </div>
+                        @if($product->sale_price >0)
+                            <div class="wrap-price">
+                                <span class="product-price">${{$product->sale_price}}</span>
+                                <del><span class="product-price regprice">${{$product->regular_price}}</span></del>
+                            </div>
+                        @else
                         <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
+                        @endif
                         <div class="stock-info in-stock">
                             <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
                         </div>
