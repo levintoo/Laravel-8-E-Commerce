@@ -243,7 +243,7 @@
                 'max': 1000
             },
         pips:{
-            mode: 'steps',
+            mode:'steps',
             stepped:true,
             density:4
         }
