@@ -43,15 +43,15 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Short Description</label>
-                                <div class="col-md-4">
-                                    <textarea class="form-control  input-md" wire:model="short_description"></textarea>
+                                <div class="col-md-4" wire:ignore>
+                                    <textarea class="form-control  input-md" id="short_description" wire:model="short_description"></textarea>
                                     @error('short_description') <p class="text-danger">{{$message}}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Description</label>
-                                <div class="col-md-4">
-                                    <textarea class="form-control input-md" rows="4" wire:model="description"></textarea>
+                                <div class="col-md-4" wire:ignore>
+                                    <textarea class="form-control input-md" id="description"  wire:model="description"></textarea>
                                     @error('description') <p class="text-danger">{{$message}}</p>@enderror
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Category</label>
                                 <div class="col-md-4">
-                                    <select class="form-control input-md" wire:model="category_id" required>
+                                    <select class="form-control input-md" wire:model="category_id" >
                                         <option >Select category</option>
                                         @foreach($categories as $category)
                                             <option value={{$category->id}}>{{$category->name}}</option>
@@ -135,3 +135,39 @@
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        $(function(){
+           tinymce.init({
+               selector:'#short_description',
+               plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+               toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+               toolbar_mode: 'floating',
+               tinycomments_mode: 'embedded',
+               tinycomments_author: 'Author name',
+               setup:function(editor){
+                   editor.on('Change',function(e){
+                       tinyMCE.triggerSave();
+                       var sd_data = $('#short_description').val();
+                       @this.set('short_description',sd_data);
+                   });
+               }
+           });
+            tinymce.init({
+                selector:'#description',
+                plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+                toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+                toolbar_mode: 'floating',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                setup:function(editor){
+                    editor.on('Change',function (e){
+                        tinyMCE.triggerSave();
+                        var d_data = $('description').val();
+                    @this.set('description',d_data);
+                    });
+                }
+            });
+        });
+    </script>
+@endpush
