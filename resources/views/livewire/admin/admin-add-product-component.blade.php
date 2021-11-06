@@ -49,12 +49,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Description</label>
-                                <div class="col-md-4" wire:ignore>
-                                    <textarea class="form-control input-md" id="description"  wire:model="description"></textarea>
-                                    @error('description') <p class="text-danger">{{$message}}</p>@enderror
+                                    <label class="col-md-4 control-label">Description</label>
+                                    <div class="col-md-4" wire:ignore>
+                                        <textarea class="form-control  input-md" id="description" wire:model="description"></textarea>
+                                        @error('description') <p class="text-danger">{{$message}}</p>@enderror
+                                    </div>
                                 </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Regular Price</label>
                                 <div class="col-md-4">
@@ -140,11 +140,6 @@
         $(function(){
            tinymce.init({
                selector:'#short_description',
-               plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-               toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
-               toolbar_mode: 'floating',
-               tinycomments_mode: 'embedded',
-               tinycomments_author: 'Author name',
                setup:function(editor){
                    editor.on('Change',function(e){
                        tinyMCE.triggerSave();
@@ -153,21 +148,17 @@
                    });
                }
            });
-            tinymce.init({
+           tinymce.init({
                 selector:'#description',
-                plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-                toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
-                toolbar_mode: 'floating',
-                tinycomments_mode: 'embedded',
-                tinycomments_author: 'Author name',
                 setup:function(editor){
-                    editor.on('Change',function (e){
+                    editor.on('Change',function(e){
                         tinyMCE.triggerSave();
-                        var d_data = $('description').val();
-                    @this.set('description',d_data);
+                        var des_data = $('#description').val();
+                    @this.set('description',des_data);
                     });
                 }
             });
         });
     </script>
 @endpush
+
